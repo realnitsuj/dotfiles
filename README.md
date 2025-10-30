@@ -42,4 +42,4 @@ I have one `init.lua`, with around 60 lines, and 6 plugins. I used to have a big
 
 # Misc
 
-- `export MANPAGER="nvim +Man!"`{.bash} in `.bash_profile` : better than `less`
+- `export MANPAGER="nvim +Man!"` in `.bash_profile` : better than `less`
