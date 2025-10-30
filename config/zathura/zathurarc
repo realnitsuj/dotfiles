@@ -1,0 +1,14 @@
+set selection-clipboard clipboard
+set recolor "true"
+set recolor-keephue "true"
+#set recolor-reverse-video "true"
+set window-title-home-tilde "true"
+set statusbar-home-tilde "true"
+
+set guioptions "vh"
+
+set database "sqlite"
+
+map t toggle_statusbar
+
+include .colorscheme

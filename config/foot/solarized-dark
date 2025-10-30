@@ -1,0 +1,41 @@
+[colors]
+# Base16 Solarized Dark - foot color config
+# Scheme by Ethan Schoonover (modified by aramisgithub)
+
+background=002b36
+foreground=93a1a1
+
+# normal
+regular0=002b36
+regular1=dc322f
+regular2=859900
+regular3=b58900
+regular4=268bd2
+regular5=6c71c4
+regular6=2aa198
+regular7=93a1a1
+
+# bright
+bright0=657b83
+bright1=cb4b16
+bright2=073642
+bright3=586e75
+bright4=839496
+bright5=eee8d5
+bright6=d33682
+bright7=fdf6e3
+
+# extended
+16=cb4b16
+17=d33682
+18=073642
+19=586e75
+20=839496
+21=eee8d5
+
+# misc
+selection-background=93a1a1
+selection-foreground=002b36
+urls=839496
+jump-labels=002b36 b58900
+scrollback-indicator=002b36 839496

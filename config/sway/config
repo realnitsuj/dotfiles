@@ -1,0 +1,266 @@
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term exec uwsm app -T
+# Your preferred application launcher
+set $menu exec fuzzel
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg ~/Images/.wallpaper fill
+# output * bg #002b36 solid_color
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output eDP-1 {
+    scale 2
+}
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input type:touchpad {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+#   input type:keyboard {
+#       xkb_layout "eu"
+#   }
+#
+# You can also configure each device individually.
+# Read `man 5 sway-input` for more information about this section.
+input "1:1:AT_Translated_Set_2_keyboard" {
+	xkb_layout fr
+	xkb_numlock enable
+}
+
+input "10248:546:FTCS1000:00_2808:0222_Touchpad" {
+	accel_profile adaptive
+	drag enabled
+	drag_lock disabled
+	dwt enabled
+	tap enabled
+	natural_scroll enabled
+	middle_emulation enabled
+}
+
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next
+
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+    bindsym Alt+Space exec $menu
+    bindsym $mod+semicolon exec rofimoji
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'Quitter Sway ?' -B 'Oui' 'uwsm stop'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+bindsym $mod+ampersand workspace number 1
+bindsym $mod+eacute workspace number 2
+bindsym $mod+quotedbl workspace number 3
+bindsym $mod+apostrophe workspace number 4
+bindsym $mod+parenleft workspace number 5
+bindsym $mod+minus workspace number 6
+bindsym $mod+egrave workspace number 7
+bindsym $mod+underscore workspace number 8
+bindsym $mod+ccedilla workspace number 9
+bindsym $mod+agrave workspace number 10
+    # Move focused container to workspace
+bindsym $mod+Shift+ampersand move container to workspace number 1
+bindsym $mod+Shift+eacute move container to workspace number 2
+bindsym $mod+Shift+quotedbl move container to workspace number 3
+bindsym $mod+Shift+apostrophe move container to workspace number 4
+bindsym $mod+Shift+parenleft move container to workspace number 5
+bindsym $mod+Shift+minus move container to workspace number 6
+bindsym $mod+Shift+egrave move container to workspace number 7
+bindsym $mod+Shift+underscore move container to workspace number 8
+bindsym $mod+Shift+ccedilla move container to workspace number 9
+bindsym $mod+Shift+agrave move container to workspace number 10
+
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+y move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+y scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+#
+# Utilities:
+#
+    bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled
+    # Special keys to adjust volume via WirePlumber
+    bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle && osd-volume
+    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+ -l 1 && osd-volume
+    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%- && osd-volume
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%- && osd-brightness
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+ && osd-brightness
+    bindsym Caps_Lock exec osd-caps
+    bindsym Num_Lock exec osd-num
+
+    # Special key to take a screenshot
+    bindsym Print exec screenshot.sh
+    # Special keys to control media
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioPause exec playerctl play-pause
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioStop exec playerctl stop
+    # Tasks manager
+    bindsym $mod+Escape exec uwsm app -T -- btop
+    # Clipboard
+    bindsym $mod+c exec cliphist-fuzzel-img
+
+### Appearance
+#
+default_border normal 1
+font FiraCodeNerdFont 10
+gaps inner 10
+
+include .colorscheme
+
+# target                title   bg      text    indicator   border
+# client.focused        $base05 $base04 $base00 $base0B     $base04
+client.focused          $base05 $base0D $base00 $base0B     $base04
+client.focused_inactive $base01 $base01 $base05 $base01     $base01
+client.unfocused        $base01 $base00 $base05 $base01     $base01
+client.urgent           $base08 $base08 $base00 $base08     $base08
+client.placeholder      $base00 $base00 $base05 $base00     $base00
+client.background       $base07
+
+
+### Windows rules
+#
+for_window [title="^Incrustation vidéo$"] \
+    floating enable, sticky enable, resize set width 384px height 216px, move absolute position 886px 544px
+
+for_window [app_id = "mpv"] \
+    floating enable, border none, sticky enable, resize set width 384px height 216px, move absolute position 886px 544px
+
+### Autostart
+#
+exec uwsm app -- /usr/bin/swayidle -w before-sleep 'swaylock --daemonize'
+exec uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec uwsm app -- /usr/bin/wl-paste --watch /usr/bin/cliphist store
+
+xwayland enable
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+
+include /etc/sway/config.d/*

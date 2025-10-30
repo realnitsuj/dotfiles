@@ -1,0 +1,16 @@
+icon-path=/usr/share/icons/Papirus-Dark
+
+background-color=#002b36
+text-color=#93a1a1
+border-color=#839496
+progress-color=#073642
+
+[urgency=low]
+background-color=#002b36
+text-color=#b58900
+border-color=#268bd2
+
+[urgency=high]
+background-color=#002b36
+text-color=#dc322f
+border-color=#268bd2

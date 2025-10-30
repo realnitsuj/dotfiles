@@ -1,0 +1,14 @@
+on-notify=exec mpv --no-config /usr/share/sounds/freedesktop/stereo/message.oga
+
+font=FiraCode Nerd Font 10
+border-size=1
+margin=10
+
+include=~/.config/mako/.colorscheme
+
+[app-name=notify-osd]
+on-notify=exec mpv --no-config /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+layer=overlay
+history=0
+anchor=center
+text-alignment=center

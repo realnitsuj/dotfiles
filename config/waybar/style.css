@@ -1,0 +1,134 @@
+@import "/home/justin/.local/share/styles/colorscheme";
+
+/********
+ * Main *
+ ********/
+
+* {
+    font-family: "FiraCode Nerd Font", "Noto Sans Mono";
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 20px;
+}
+
+window#waybar {
+    background-color: @base00;
+    color: @base05;
+}
+
+tooltip {
+    background: @base01;
+    border: 1px solid @base02;
+    text-shadow: none;
+}
+tooltip label {
+    color: @base05;
+}
+
+/****************
+ * Modules Sway *
+ ****************/
+
+#workspaces button {
+    padding: 0 5px;
+    color: @base05;
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    text-shadow: none;
+    transition: none;
+    color: @base04;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: @base01;
+    color: @base0E;
+}
+
+#workspaces button.urgent {
+    background-color: @base08;
+    color: @base01;
+}
+
+#mode {
+    background-color: @base02;
+    color: @base08;
+}
+
+#clock,
+#battery,
+#backlight,
+#network,
+#wireplumber,
+#tray,
+#mode,
+#scratchpad,
+#bluetooth,
+#custom-chess {
+    padding: 0 10px;
+    color: @base05;
+    background-color: @base01;
+}
+
+#battery.charging {
+    background-color: @base0B;
+    color: @base01;
+}
+
+#battery.plugged {
+    background-color: @base0D;
+    color: @base01;
+}
+
+#battery.warning:not(.charging) {
+    color: @base0A;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @base08;
+    color: @base01;
+}
+
+#network, #custom-chess {
+    padding-right: 11.25px;
+    padding-left: 8.75px;
+}
+
+#network.disconnected {
+    background-color: @base08;
+    color: @base01;
+}
+
+#bluetooth.on {
+    background-color: @base08;
+    color: @base01;
+}
+
+#bluetooth.connected {
+    color: @base0D;
+}
+
+#wireplumber.muted {
+    background-color: @base09;
+    color: @base01;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @base08;
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}
